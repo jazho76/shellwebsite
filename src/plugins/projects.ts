@@ -1,8 +1,8 @@
-import { bold, dim, yellow } from '../core/color.js';
+import { bold, dim, red, yellow } from '../core/color.js';
 import type { PluginInstall } from '../core/kernel.js';
+import { settings } from '../me/settings.js';
 
-const GITHUB_USER = 'jazho76';
-const API = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`;
+const GITHUB_USER = settings.githubUser;
 const DEFAULT_N = 10;
 
 type Repo = {
@@ -18,15 +18,16 @@ type Repo = {
 let cache: Repo[] | null = null;
 let inflight: Promise<Repo[]> | null = null;
 
-const fetchRepos = async (): Promise<Repo[]> => {
+const fetchRepos = async (user: string): Promise<Repo[]> => {
   if (cache) {
     return cache;
   }
   if (inflight) {
     return inflight;
   }
+  const url = `https://api.github.com/users/${user}/repos?per_page=100`;
   inflight = (async () => {
-    const res = await fetch(API, { cache: 'no-cache' });
+    const res = await fetch(url, { cache: 'no-cache' });
     if (res.status === 403) {
       throw new Error('rate-limited');
     }
@@ -50,6 +51,11 @@ const install: PluginInstall = kernel => {
   kernel.installExecutable('/bin/projects', {
     describe: 'top public github repos by stars',
     async exec(ctx) {
+      if (!GITHUB_USER) {
+        ctx.stderr(red('projects: settings.githubUser is not set') + '\n');
+        return 1;
+      }
+
       const arg = ctx.argv[1];
       let limit = DEFAULT_N;
       if (arg !== undefined) {
@@ -71,7 +77,7 @@ const install: PluginInstall = kernel => {
 
       let repos: Repo[];
       try {
-        repos = await fetchRepos();
+        repos = await fetchRepos(GITHUB_USER);
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
         if (msg === 'rate-limited') {

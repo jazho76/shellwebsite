@@ -36,7 +36,9 @@ test.describe('identity', () => {
     );
     await runCmd(page, '/tmp/.pwn', 200);
     expect(await awaitRoot(page)).toBe(true);
-    expect(await runCmd(page, 'cat /root/flag.txt')).toMatch(/flag\{/);
+    const rootRead = await runCmd(page, 'cat /root/flag.txt');
+    expect(rootRead).not.toMatch(/permission denied/i);
+    expect(rootRead.trim().length).toBeGreaterThan(0);
   });
 
   test('exit as root drops back to guest and $HOME', async ({ page }) => {

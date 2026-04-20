@@ -1,3 +1,4 @@
+import { settings } from '../me/settings.js';
 import { plugins } from '../plugins/index.js';
 import type { Ctx, Shell } from './shell.js';
 import { createShell } from './shell.js';
@@ -84,9 +85,8 @@ const BIN_FILE_TYPE =
 const PATH: readonly string[] = ['/bin'];
 
 const resolveHostname = (): string => {
-  const env = import.meta.env.VITE_HOSTNAME;
-  if (typeof env === 'string' && env.length > 0) {
-    return env;
+  if (settings.hostname) {
+    return settings.hostname;
   }
   if (typeof window !== 'undefined' && window.location?.hostname) {
     return window.location.hostname;

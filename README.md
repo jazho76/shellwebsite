@@ -100,30 +100,27 @@ set — analytics just no-op.
 To turn this into _your_ site, touch these files. Everything else is the
 framework.
 
+Everything personal lives under `src/me/`. Touch those files and leave the
+framework alone.
+
 | File                           | What's in it                                               |
 | ------------------------------ | ---------------------------------------------------------- |
-| `src/plugins/welcome.ts`       | Banner + bio + links (the landing command)                 |
-| `src/plugins/site-content.ts`  | Personal content, home tree                                |
-| `src/plugins/projects.ts`      | `GITHUB_USER` constant for the live GitHub list            |
-| `src/plugins/etc.ts`           | `/etc/hostname` value (shows in the prompt)                |
-| `src/plugins/identity.ts`      | Default user name (`guest`), root password, etc.           |
-| `src/plugins/posthog.ts`       | Reads `VITE_POSTHOG_KEY`; unset it or remove the plugin to disable analytics |
-| `src/index.html`               | `<title>`, hardcoded prompt text, favicon                  |
-| `public/favicon.png`           | Favicon                                                    |
+| `src/me/settings.ts`           | GitHub username, PostHog key, hostname override            |
+| `src/me/welcome.ts`            | Banner + bio + links (the landing command)                 |
+| `src/me/site-content.ts`       | About text, home/root/usr/var tree                         |
+| `src/plugins/identity.ts`      | Default user name (`guest`), root password                 |
+| `src/index.html`               | `<title>`, favicon                                         |
 | `src/themes/`                  | Add your own theme or tweak the defaults                   |
 | `.firebaserc`, `firebase.json` | Firebase Hosting config. Update with your project if you deploy there, or delete them if you deploy elsewhere |
 
 Recommended path:
 
 1. Clone, `npm install`, `npm run dev`.
-2. Edit `welcome.ts`, `site-content.ts`, `projects.ts` (set `GITHUB_USER`).
-3. Edit `etc.ts` to change the hostname.
-4. Set `VITE_POSTHOG_KEY` in `.env` to enable analytics, or remove the plugin
-   from `src/plugins/index.ts` if you don't want it at all.
-5. Pick a host. For Firebase, update `.firebaserc` and add a `FIREBASE_TOKEN`
+2. Edit `src/me/settings.ts`, `src/me/welcome.ts`, `src/me/site-content.ts`.
+3. Pick a host. For Firebase, update `.firebaserc` and add a `FIREBASE_TOKEN`
    secret to GitHub Actions. For anything else, delete the Firebase files and
    wire up your own deploy.
-6. Add a plugin for any bespoke command you want (see [Extending](#extending)).
+4. Add a plugin for any bespoke command you want (see [Extending](#extending)).
 
 ---
 

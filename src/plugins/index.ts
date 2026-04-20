@@ -1,4 +1,6 @@
 import type { PluginInstall } from '../core/kernel.js';
+import siteContent from '../me/site-content.js';
+import welcome from '../me/welcome.js';
 import bashHistory from './bash-history.js';
 import bootSplash from './boot-splash.js';
 import colortest from './colortest.js';
@@ -14,12 +16,10 @@ import proc from './proc.js';
 import projects from './projects.js';
 import pwn from './pwn.js';
 import rmEgg from './rm-egg.js';
-import siteContent from './site-content.js';
 import sysinfo from './sysinfo.js';
 import text from './text.js';
 import theme from './theme.js';
 import version from './version.js';
-import welcome from './welcome.js';
 
 export const plugins: PluginInstall[] = [
   etc,
