@@ -56,8 +56,9 @@ const install: PluginInstall = kernel => {
         ctx.out(`uname: invalid option -- '${flag.replace(/^-/, '')}'\n`);
         return 1;
       }
+      const hostname = kernel.identity.current().hostname;
       ctx.out(
-        'Linux shellwebsite 6.11.5-arch1-1 #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux\n'
+        `Linux ${hostname} 6.11.5-arch1-1 #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux\n`
       );
       return 0;
     },
@@ -75,9 +76,11 @@ const install: PluginInstall = kernel => {
     describe: 'show who is logged in',
     exec(ctx) {
       const timestamp = formatMtime(new Date());
+      const hostname = kernel.identity.current().hostname;
+      const hostCol = hostname.padEnd(18).slice(0, 18);
       ctx.out(
         [
-          `guest      pts/0   jpinillos.dev       ${timestamp}`,
+          `guest      pts/0   ${hostCol}  ${timestamp}`,
           'condor     pts/1   2600.net            Apr 16 03:14',
           'optik      pts/2   legion-of-doom.bbs  Jan  8 03:00',
           'cuckoo     pts/3   lbl.gov             Aug 12 02:30',

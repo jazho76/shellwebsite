@@ -83,6 +83,17 @@ const BIN_FILE_TYPE =
 
 const PATH: readonly string[] = ['/bin'];
 
+const resolveHostname = (): string => {
+  const env = import.meta.env.VITE_HOSTNAME;
+  if (typeof env === 'string' && env.length > 0) {
+    return env;
+  }
+  if (typeof window !== 'undefined' && window.location?.hostname) {
+    return window.location.hostname;
+  }
+  return 'shell.local';
+};
+
 const kernel = {} as Kernel;
 
 const vfs = createVfs();
@@ -91,7 +102,7 @@ kernel.vfs = vfs;
 let currentName = 'guest';
 let bootTime = Date.now();
 let cwd = HOME;
-let cachedHostname = 'localhost';
+let cachedHostname = resolveHostname();
 
 const installed = new Map<string, Executable>();
 
