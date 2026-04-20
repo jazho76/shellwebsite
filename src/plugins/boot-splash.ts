@@ -57,7 +57,7 @@ const BOOT_STEPS: BootStep[] = [
   { type: 'line', text: '' },
   { type: 'line', text: 'Booting from Hard Disk ...' },
   { type: 'delay', ms: 200 },
-  { type: 'line', text: 'Loading jpinillos.dev ...' },
+  { type: 'line', text: 'Loading shellwebsite ...' },
   { type: 'delay', ms: 250 },
   { type: 'line', text: '' },
   {

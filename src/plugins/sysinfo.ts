@@ -57,7 +57,7 @@ const install: PluginInstall = kernel => {
         return 1;
       }
       ctx.out(
-        'Linux jpinillos.dev 6.11.5-arch1-1 #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux\n'
+        'Linux shellwebsite 6.11.5-arch1-1 #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux\n'
       );
       return 0;
     },

@@ -7,7 +7,7 @@ const install: PluginInstall = kernel => {
   kernel.installExecutable('/bin/version', {
     describe: 'print application version',
     exec(ctx) {
-      ctx.out(`jpinillos.dev ${VERSION} (${COMMIT})\n`);
+      ctx.out(`shellwebsite ${VERSION} (${COMMIT})\n`);
       return 0;
     },
   });
