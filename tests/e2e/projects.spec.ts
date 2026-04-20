@@ -15,7 +15,7 @@ type Fake = {
 const repo = (overrides: Partial<Fake>): Fake => ({
   name: 'repo',
   description: 'a thing',
-  html_url: 'https://github.com/jazho76/repo',
+  html_url: 'https://github.com/testuser/repo',
   stargazers_count: 0,
   pushed_at: '2024-01-01T00:00:00Z',
   fork: false,
@@ -97,7 +97,7 @@ test.describe('projects', () => {
     await mountRepos(page, [
       repo({
         name: 'foo',
-        html_url: 'https://github.com/jazho76/foo',
+        html_url: 'https://github.com/testuser/foo',
         stargazers_count: 1,
       }),
     ]);
@@ -109,7 +109,7 @@ test.describe('projects', () => {
       const a = last?.querySelector('a');
       return a?.getAttribute('href') ?? null;
     });
-    expect(href).toBe('https://github.com/jazho76/foo');
+    expect(href).toBe('https://github.com/testuser/foo');
   });
 
   test('null description renders a placeholder', async ({ page }) => {
@@ -128,7 +128,7 @@ test.describe('projects', () => {
       repo({
         name: 'hack',
         description: 'read [README](./README.md) first',
-        html_url: 'https://github.com/jazho76/hack',
+        html_url: 'https://github.com/testuser/hack',
         stargazers_count: 1,
       }),
     ]);
@@ -142,7 +142,7 @@ test.describe('projects', () => {
       );
     });
     // Only the repo anchor; no description-borne link.
-    expect(hrefs).toEqual(['https://github.com/jazho76/hack']);
+    expect(hrefs).toEqual(['https://github.com/testuser/hack']);
   });
 
   test('network failure surfaces a single stderr line', async ({ page }) => {

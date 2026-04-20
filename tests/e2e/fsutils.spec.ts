@@ -101,9 +101,10 @@ test.describe('cp', () => {
   test('copies a file to a new path', async ({ page }) => {
     await bootAndReady(page);
     const p = scratch('cp_file');
+    const original = (await runCmd(page, 'cat /etc/hostname')).trim();
     await runCmd(page, `mkdir -p ${p}`);
     await runCmd(page, `cp /etc/hostname ${p}/host`);
-    expect((await runCmd(page, `cat ${p}/host`)).trim()).toBe('jpinillos.dev');
+    expect((await runCmd(page, `cat ${p}/host`)).trim()).toBe(original);
   });
 
   test('source is preserved', async ({ page }) => {
@@ -118,10 +119,11 @@ test.describe('cp', () => {
   test('copying into an existing dir uses basename', async ({ page }) => {
     await bootAndReady(page);
     const p = scratch('cp_into_dir');
+    const original = (await runCmd(page, 'cat /etc/hostname')).trim();
     await runCmd(page, `mkdir -p ${p}/dest`);
     await runCmd(page, `cp /etc/hostname ${p}/dest`);
     expect((await runCmd(page, `cat ${p}/dest/hostname`)).trim()).toBe(
-      'jpinillos.dev'
+      original
     );
   });
 

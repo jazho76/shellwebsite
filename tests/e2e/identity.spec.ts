@@ -4,7 +4,7 @@ import { awaitRoot, bootAndReady, ident, runCmd } from '../fixtures/harness.js';
 test.describe('identity', () => {
   test('default identity is guest, uid 1000', async ({ page }) => {
     await bootAndReady(page);
-    expect(await ident(page)).toBe('guest@jpinillos.dev');
+    expect(await ident(page)).toMatch(/^guest@\S+$/);
     expect(await runCmd(page, 'id')).toMatch(/uid=1000\(guest\)/);
   });
 
@@ -13,7 +13,7 @@ test.describe('identity', () => {
     await bootAndReady(page);
     await runCmd(page, '/tmp/.pwn', 200);
     expect(await awaitRoot(page)).toBe(true);
-    expect(await ident(page)).toBe('root@jpinillos.dev');
+    expect(await ident(page)).toMatch(/^root@\S+$/);
     expect(await runCmd(page, 'id')).toMatch(/uid=0\(root\)/);
   });
 
@@ -45,7 +45,7 @@ test.describe('identity', () => {
     await runCmd(page, '/tmp/.pwn', 200);
     expect(await awaitRoot(page)).toBe(true);
     await runCmd(page, 'exit');
-    expect(await ident(page)).toBe('guest@jpinillos.dev');
+    expect(await ident(page)).toMatch(/^guest@\S+$/);
     expect(await runCmd(page, 'pwd')).toContain('/home/guest');
   });
 });

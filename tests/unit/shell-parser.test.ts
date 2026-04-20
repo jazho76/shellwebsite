@@ -13,7 +13,7 @@ const env: ExpandEnv = {
   USER: 'guest',
   PWD: '/home/guest',
   PATH: '/bin',
-  HOSTNAME: 'jpinillos.dev',
+  HOSTNAME: 'host.local',
   '?': '0',
 };
 

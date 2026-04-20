@@ -329,7 +329,7 @@ describe('createVfs.resolve', () => {
   test('resolves a file through a mount', () => {
     const v = createVfs();
     v.registerMount(
-      treeMount('/etc', () => dir({ hostname: file('jpinillos.dev') }))
+      treeMount('/etc', () => dir({ hostname: file('host.local') }))
     );
     const r = v.resolve('/etc/hostname', '/', root);
     expect(r.ok).toBe(true);

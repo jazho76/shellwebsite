@@ -9,7 +9,7 @@ test.describe('resolver: bare names via $PATH', () => {
     ['whoami', /guest/],
     ['id', /uid=1000/],
     ['echo hi', /hi/],
-    ['cat /etc/hostname', /jpinillos\.dev/],
+    ['cat /etc/hostname', /\S/],
     ['uname', /Linux/],
     ['date', /\d{4}/],
     ['file /bin/ls', /ELF/],
@@ -69,7 +69,7 @@ test.describe('resolver: .pwn path scoping', () => {
       await bootAndReady(page);
       await runCmd(page, `cd ${cwd}`);
       expect(await runCmd(page, '.pwn')).toMatch(/command not found: \.pwn/);
-      expect(await ident(page)).toBe('guest@jpinillos.dev');
+      expect(await ident(page)).toMatch(/^guest@\S+$/);
     });
   }
 });

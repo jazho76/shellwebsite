@@ -182,7 +182,9 @@ test.describe('echo', () => {
 test.describe('cat', () => {
   test('reads a file', async ({ page }) => {
     await bootAndReady(page);
-    expect(await runCmd(page, 'cat /etc/hostname')).toContain('jpinillos.dev');
+    expect(
+      (await runCmd(page, 'cat /etc/hostname')).trim().length
+    ).toBeGreaterThan(0);
   });
 
   test('no args and no stdin → empty output, exit 0', async ({ page }) => {
@@ -210,19 +212,23 @@ test.describe('cat', () => {
 
   test('multiple files concatenate', async ({ page }) => {
     await bootAndReady(page);
+    const hostname = (await runCmd(page, 'cat /etc/hostname')).trim();
+    const motd = (await runCmd(page, 'cat /etc/motd')).trim();
     const out = await runCmd(page, 'cat /etc/hostname /etc/motd');
-    expect(out).toContain('jpinillos.dev');
-    expect(out).toContain('chop wood, carry water');
+    expect(out).toContain(hostname);
+    expect(out).toContain(motd);
   });
 
   test('one missing file reports error but prints the others', async ({
     page,
   }) => {
     await bootAndReady(page);
+    const hostname = (await runCmd(page, 'cat /etc/hostname')).trim();
+    const motd = (await runCmd(page, 'cat /etc/motd')).trim();
     const out = await runCmd(page, 'cat /etc/hostname /nope /etc/motd');
-    expect(out).toContain('jpinillos.dev');
+    expect(out).toContain(hostname);
     expect(out).toMatch(/cat: \/nope: no such file or directory/);
-    expect(out).toContain('chop wood, carry water');
+    expect(out).toContain(motd);
   });
 });
 
@@ -322,14 +328,14 @@ test.describe('exit', () => {
     await runCmd(page, '/tmp/.pwn', 200);
     expect(await awaitRoot(page)).toBe(true);
     expect(await runCmd(page, 'exit')).toMatch(/logout/);
-    expect(await ident(page)).toBe('guest@jpinillos.dev');
+    expect(await ident(page)).toMatch(/^guest@\S+$/);
   });
 });
 
 test.describe('uname / date / who / ps / kill', () => {
   test('uname emits Linux line', async ({ page }) => {
     await bootAndReady(page);
-    expect(await runCmd(page, 'uname')).toMatch(/Linux jpinillos\.dev/);
+    expect(await runCmd(page, 'uname')).toMatch(/^Linux\s+\S+/);
   });
 
   test('uname -x is invalid', async ({ page }) => {
@@ -406,9 +412,9 @@ test.describe('restart', () => {
 });
 
 test.describe('version', () => {
-  test('prints jpinillos.dev <version> (<commit>)', async ({ page }) => {
+  test('prints <hostname> <version> (<commit>)', async ({ page }) => {
     await bootAndReady(page);
-    expect(await runCmd(page, 'version')).toMatch(/jpinillos\.dev \S+ \(\S+\)/);
+    expect(await runCmd(page, 'version')).toMatch(/^\S+\s+\S+\s+\(\S+\)/);
   });
 
   test('locally defaults to dev (local)', async ({ page }) => {
@@ -416,6 +422,6 @@ test.describe('version', () => {
     // Without VITE_APP_VERSION / VITE_APP_COMMIT set, the build falls back.
     // We don't hard-assert the values because CI will inject real ones.
     const out = await runCmd(page, 'version');
-    expect(out).toMatch(/jpinillos\.dev/);
+    expect(out.trim().length).toBeGreaterThan(0);
   });
 });

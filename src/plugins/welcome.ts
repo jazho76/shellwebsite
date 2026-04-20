@@ -46,7 +46,7 @@ const CONTENT: string[] = [
   `${bullet} try: ${cmd('about')}, ${cmd('projects')}, ${cmd('help')}`,
   '',
   dim(
-    'source code for this terminal lives at [github.com/jazho76/shellsite](https://github.com/jazho76/shellsite)'
+    'source code for this terminal lives at [github.com/jazho76/shellwebsite](https://github.com/jazho76/shellwebsite)'
   ),
 ];
 

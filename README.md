@@ -1,4 +1,4 @@
-# ShellSite
+# Shell Website
 
 A self-contained, client-side terminal you can deploy as a personal website.
 Ships with a real shell (pipes, redirects, globs, history, tab completion), an
@@ -9,7 +9,7 @@ server, no runtime other than static files.
 **Demo:** [jpinillos.dev](https://jpinillos.dev). Fork it, strip my content,
 drop in yours.
 
-![ShellSite boot splash and shell session](docs/screenshot.png)
+![Shell Website boot splash and shell session](docs/screenshot.png)
 
 ---
 
