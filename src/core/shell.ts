@@ -1,5 +1,5 @@
 import { red } from './color.js';
-import type { Kernel } from './kernel.js';
+import type { ExecOpts, Kernel } from './kernel.js';
 import { globExpand } from './shell-glob.js';
 import type { ExpandEnv, ParsedItem, ParsedSequence } from './shell-parser.js';
 import {
@@ -76,6 +76,28 @@ export type Shell = {
   listEnv(): Array<[string, string]>;
   getPath(): readonly string[];
 };
+
+/**
+ * Build an exec that reads a fixed file and writes its content, mirroring
+ * cat's error messages. Useful for content commands like `/bin/about` that
+ * alias a single file under a nicer name.
+ */
+export const aliasCat =
+  (target: string): ExecOpts['exec'] =>
+  (ctx: Ctx) => {
+    const r = ctx.fs.read(target);
+    if (!r.ok) {
+      const msg: Record<string, string> = {
+        ENOENT: `cat: ${target}: no such file or directory`,
+        EACCES: `cat: ${target}: Permission denied`,
+        EISDIR: `cat: ${target}: is a directory`,
+      };
+      ctx.out((msg[r.error] ?? `cat: ${target}: ${r.error}`) + '\n');
+      return 1;
+    }
+    ctx.out(r.content + '\n');
+    return 0;
+  };
 
 const DYNAMIC_KEYS = new Set(['HOME', 'USER', 'PWD', 'HOSTNAME']);
 
