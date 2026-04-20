@@ -1,0 +1,166 @@
+html,
+body {
+  font-family:
+    'Consolas', Menlo, Monaco, 'Lucida Console', 'Liberation Mono',
+    'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace,
+    serif;
+  color: var(--fg);
+  text-align: left;
+  background: var(--bg);
+  margin: 0;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: clamp(0.75rem, 2.4vw, 1rem);
+  min-height: calc(100vh - 2rem);
+  text-shadow: var(--text-shadow);
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.entry .out {
+  white-space: pre-wrap;
+}
+
+.spacer {
+  height: 0.5rem;
+}
+
+.boot-line {
+  min-height: 1.2em;
+}
+
+.input-line {
+  position: relative;
+}
+
+.input-line.hidden {
+  visibility: hidden;
+}
+
+.typed {
+  white-space: pre;
+}
+
+#input {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 16px;
+}
+
+.prompt {
+  display: flex;
+  color: var(--fg);
+}
+
+.prompt > .host {
+  color: var(--prompt-host);
+  font-weight: bold;
+}
+
+.prompt > .cwd {
+  color: var(--prompt-cwd);
+  padding-right: 2px;
+}
+
+a {
+  color: var(--link);
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+a:after {
+  content: '';
+  height: 1px;
+  background: var(--link);
+  position: absolute;
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: scale(0, 1);
+  transition: all 300ms;
+}
+
+a:hover:after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.cursor {
+  display: inline-block;
+  min-width: 1ch;
+  height: 1.1em;
+  background-color: var(--cursor-bg);
+  animation: blink 1s infinite step-end;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    background-color: var(--cursor-bg);
+    color: var(--cursor-fg);
+  }
+  50% {
+    background-color: transparent;
+    color: var(--fg);
+  }
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-dim {
+  opacity: 0.6;
+}
+.ansi-italic {
+  font-style: italic;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+.ansi-strike {
+  text-decoration: line-through;
+}
+.ansi-underline.ansi-strike {
+  text-decoration: underline line-through;
+}

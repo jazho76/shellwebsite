@@ -1,0 +1,29 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: firebase-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+        env:
+          VITE_POSTHOG_KEY: ${{ secrets.POSTHOG_KEY }}
+          VITE_APP_VERSION: '1.0.${{ github.run_number }}'
+          VITE_APP_COMMIT: ${{ github.sha }}
+      - name: Deploy to Firebase
+        if: env.FIREBASE_TOKEN != ''
+        run: npx firebase-tools deploy --only hosting --non-interactive --token "$FIREBASE_TOKEN"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
