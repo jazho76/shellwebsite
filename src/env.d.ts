@@ -6,3 +6,13 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+declare module '*.jpg' {
+  const url: string;
+  export default url;
+}
+
+declare module '*.png' {
+  const url: string;
+  export default url;
+}
