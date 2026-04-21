@@ -104,6 +104,10 @@ let bootTime = Date.now();
 let cwd = HOME;
 let cachedHostname = resolveHostname();
 
+if (typeof document !== 'undefined') {
+  document.title = cachedHostname;
+}
+
 const installed = new Map<string, Executable>();
 
 type AnySubscriber = EventHandler<EventName>;
