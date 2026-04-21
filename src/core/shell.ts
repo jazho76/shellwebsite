@@ -214,8 +214,8 @@ export function createShell(kernel: Kernel): Shell {
     fs: buildFsFacade(),
     term: {
       clear: () => {
-        opts.entry.detach();
         terminal.clear();
+        opts.entry.reset();
       },
       toggleClass: terminal.toggleClass,
       corrupt: terminal.corrupt,

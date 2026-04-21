@@ -5,7 +5,7 @@ const MARKUP_RE = /\[([^\]]+)\]\(([^)]+)\)/g;
 
 export type EntryHandle = {
   append(nodeOrStr: string | Node): void;
-  detach(): void;
+  reset(): void;
 };
 
 export type Terminal = {
@@ -188,15 +188,17 @@ export function createTerminal(kernel: Kernel): Terminal {
     const line = el('div', 'line');
     line.append(promptNode(), el('span', 'typed', ' ' + commandText));
     entry.append(line);
-    const outDiv = el('div', 'out');
+    let outDiv: HTMLElement | null = el('div', 'out');
     entry.append(outDiv);
     output.append(entry);
     scrollToBottom();
-    let detached = false;
     return {
       append(nodeOrStr) {
-        if (detached) {
-          return;
+        if (!outDiv) {
+          const wrap = el('div', 'entry');
+          outDiv = el('div', 'out');
+          wrap.append(outDiv);
+          output.append(wrap);
         }
         if (typeof nodeOrStr === 'string') {
           outDiv.append(renderMarkup(nodeOrStr));
@@ -205,8 +207,8 @@ export function createTerminal(kernel: Kernel): Terminal {
         }
         scrollToBottom();
       },
-      detach() {
-        detached = true;
+      reset() {
+        outDiv = null;
       },
     };
   };
