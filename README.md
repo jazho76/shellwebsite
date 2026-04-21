@@ -40,7 +40,62 @@ Framework themes: `catppuccin-mocha`, `crt`, `dracula`, `espresso`, `graphite`,
 `gruvbox`, `matrix`, `nord`, `synthwave`, `tokyo-night`. Plus `jazho76` as an example
 of a custom theme. Swap at runtime via `theme <name>`. One
 module per theme. Update `src/themes/index.ts` to add your own or change the default.
-See the [theme gallery](docs/themes.md) for screenshots.
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="docs/themes/catppuccin-mocha.png"><img src="docs/themes/catppuccin-mocha.png" width="320" alt="catppuccin-mocha"></a><br>
+      <sub><code>catppuccin-mocha</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/crt.png"><img src="docs/themes/crt.png" width="320" alt="crt"></a><br>
+      <sub><code>crt</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/dracula.png"><img src="docs/themes/dracula.png" width="320" alt="dracula"></a><br>
+      <sub><code>dracula</code></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="docs/themes/espresso.png"><img src="docs/themes/espresso.png" width="320" alt="espresso"></a><br>
+      <sub><code>espresso</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/graphite.png"><img src="docs/themes/graphite.png" width="320" alt="graphite"></a><br>
+      <sub><code>graphite</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/gruvbox.png"><img src="docs/themes/gruvbox.png" width="320" alt="gruvbox"></a><br>
+      <sub><code>gruvbox</code></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="docs/themes/jazho76.png"><img src="docs/themes/jazho76.png" width="320" alt="jazho76"></a><br>
+      <sub><code>jazho76</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/matrix.png"><img src="docs/themes/matrix.png" width="320" alt="matrix"></a><br>
+      <sub><code>matrix</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/nord.png"><img src="docs/themes/nord.png" width="320" alt="nord"></a><br>
+      <sub><code>nord</code></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="docs/themes/synthwave.png"><img src="docs/themes/synthwave.png" width="320" alt="synthwave"></a><br>
+      <sub><code>synthwave</code></sub>
+    </td>
+    <td align="center">
+      <a href="docs/themes/tokyo-night.png"><img src="docs/themes/tokyo-night.png" width="320" alt="tokyo-night"></a><br>
+      <sub><code>tokyo-night</code></sub>
+    </td>
+    <td></td>
+  </tr>
+</table>
 
 Themes are CSS-var overrides plus optional structured props
 (`backgroundImage`, `overlayBackground`, `overlayBlur`) for wallpaper / glass
