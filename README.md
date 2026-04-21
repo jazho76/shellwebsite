@@ -37,8 +37,8 @@ drop in yours.
 
 **Themes**
 
-Framework themes: `crt`, `dracula`, `espresso`, `graphite`, `gruvbox`,
-`matrix`, `nord`, `synthwave`, `tokyo-night`. Plus `jazho76` as an example
+Framework themes: `catppuccin-mocha`, `crt`, `dracula`, `espresso`, `graphite`,
+`gruvbox`, `matrix`, `nord`, `synthwave`, `tokyo-night`. Plus `jazho76` as an example
 of a custom theme. Swap at runtime via `theme <name>`. One
 module per theme. Update `src/themes/index.ts` to add your own or change the default.
 
@@ -408,3 +408,6 @@ what you want.
 The content in `src/plugins/me/` (bio, links, copy) and the `jazho76` theme
 are mine. Legally the MIT license covers it too, but socially please rip it
 out and put your own in before deploying.
+
+Bundled third-party color palettes are credited in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

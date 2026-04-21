@@ -1,3 +1,4 @@
+import catppuccinMocha from './catppuccin-mocha.js';
 import crt from './crt.js';
 import dracula from './dracula.js';
 import espresso from './espresso.js';
@@ -23,6 +24,7 @@ export type Theme = {
 };
 
 export const themes: readonly Theme[] = [
+  catppuccinMocha,
   crt,
   dracula,
   espresso,

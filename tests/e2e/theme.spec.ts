@@ -18,6 +18,7 @@ test.describe('theme command', () => {
     for (const name of [
       'crt',
       'espresso',
+      'catppuccin-mocha',
       'dracula',
       'nord',
       'gruvbox',
@@ -55,6 +56,16 @@ test.describe('theme command', () => {
     await runCmd(page, 'theme espresso');
     expect(await page.evaluate(() => document.body.dataset.theme)).toBe(
       'espresso'
+    );
+  });
+
+  test('theme catppuccin-mocha applies the catppuccin-mocha theme', async ({
+    page,
+  }) => {
+    await bootAndReady(page);
+    await runCmd(page, 'theme catppuccin-mocha');
+    expect(await page.evaluate(() => document.body.dataset.theme)).toBe(
+      'catppuccin-mocha'
     );
   });
 
