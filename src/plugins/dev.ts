@@ -84,6 +84,35 @@ const SPEC: Record<string, DevSpec> = {
     mode: 0o600,
     writePolicy: 'readonly',
   },
+  stdin: {
+    content: '',
+    fileType: CHAR_SPECIAL,
+    mode: 0o666,
+    writePolicy: 'discard',
+  },
+  stdout: {
+    content: '',
+    fileType: CHAR_SPECIAL,
+    mode: 0o666,
+    writePolicy: 'discard',
+  },
+  stderr: {
+    content: '',
+    fileType: CHAR_SPECIAL,
+    mode: 0o666,
+    writePolicy: 'discard',
+  },
+  kmsg: {
+    content:
+      `<6>[    0.000000] Linux version ${system.kernel.version}\n` +
+      `<6>[    0.123456] Command line: BOOT_IMAGE=/boot/vmlinuz-${system.kernel.version} root=UUID=cafebabe-1337-beef rw quiet splash\n` +
+      `<6>[    0.234567] Memory: ${(system.hardware.memoryMB * 1024) / 2}K/${system.hardware.memoryMB * 1024}K available\n` +
+      `<6>[    1.345678] EXT4-fs (${system.hardware.storage.partitions[1]}): mounted filesystem with ordered data mode\n` +
+      `<6>[    2.456789] systemd[1]: Started Journal Service`,
+    fileType: CHAR_SPECIAL,
+    mode: 0o444,
+    writePolicy: 'readonly',
+  },
 };
 
 const nvmeSpec: DevSpec = {
