@@ -322,21 +322,23 @@ export function createTerminal(kernel: Kernel): Terminal {
       const pool = Math.random() < intensity * 0.8 ? blockChars : noiseChars;
       return pool[Math.floor(Math.random() * pool.length)] as string;
     };
-    const nodes = output.querySelectorAll('div, span');
-    nodes.forEach(node => {
-      if (
-        node.children.length === 0 &&
-        node.textContent &&
-        node.textContent.trim()
-      ) {
-        const src = node.textContent;
-        let result = '';
-        for (let i = 0; i < src.length; i++) {
-          result += Math.random() < intensity ? pickChar() : src[i];
-        }
-        node.textContent = result;
+    const walker = document.createTreeWalker(output, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    let node: Node | null;
+    while ((node = walker.nextNode())) {
+      textNodes.push(node as Text);
+    }
+    for (const tn of textNodes) {
+      const src = tn.data;
+      if (!src.trim()) {
+        continue;
       }
-    });
+      let result = '';
+      for (let i = 0; i < src.length; i++) {
+        result += Math.random() < intensity ? pickChar() : src[i];
+      }
+      tn.data = result;
+    }
   };
 
   const commonPrefix = (strs: string[]): string => {
