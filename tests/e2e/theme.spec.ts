@@ -17,7 +17,7 @@ test.describe('theme command', () => {
     expect(out).toMatch(/\*\s+tokyo-night/);
     for (const name of [
       'crt',
-      'cappuccino',
+      'espresso',
       'dracula',
       'nord',
       'gruvbox',
@@ -50,11 +50,11 @@ test.describe('theme command', () => {
     expect(await page.evaluate(() => document.body.dataset.theme)).toBe('crt');
   });
 
-  test('theme cappuccino applies the cappuccino theme', async ({ page }) => {
+  test('theme espresso applies the espresso theme', async ({ page }) => {
     await bootAndReady(page);
-    await runCmd(page, 'theme cappuccino');
+    await runCmd(page, 'theme espresso');
     expect(await page.evaluate(() => document.body.dataset.theme)).toBe(
-      'cappuccino'
+      'espresso'
     );
   });
 
@@ -81,11 +81,11 @@ test.describe('theme command', () => {
     const defaultBg = await page.evaluate(
       () => getComputedStyle(document.body).backgroundColor
     );
-    await runCmd(page, 'theme cappuccino');
-    const cappuccinoBg = await page.evaluate(
+    await runCmd(page, 'theme espresso');
+    const espressoBg = await page.evaluate(
       () => getComputedStyle(document.body).backgroundColor
     );
-    expect(defaultBg).not.toBe(cappuccinoBg);
+    expect(defaultBg).not.toBe(espressoBg);
   });
 
   test('bare `crt` is not a command (theme crt is the single entry point)', async ({

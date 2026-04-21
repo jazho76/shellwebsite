@@ -1,6 +1,6 @@
-import cappuccino from './cappuccino.js';
 import crt from './crt.js';
 import dracula from './dracula.js';
+import espresso from './espresso.js';
 import graphite from './graphite.js';
 import gruvbox from './gruvbox.js';
 import jazho76 from './jazho76.js';
@@ -23,9 +23,9 @@ export type Theme = {
 };
 
 export const themes: readonly Theme[] = [
-  cappuccino,
   crt,
   dracula,
+  espresso,
   graphite,
   gruvbox,
   jazho76,

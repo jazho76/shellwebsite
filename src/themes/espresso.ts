@@ -1,10 +1,10 @@
 import type { Theme } from './index.js';
 
 const theme: Theme = {
-  name: 'cappuccino',
+  name: 'espresso',
   describe: 'warm cream with espresso text',
   css: `
-body[data-theme="cappuccino"] {
+body[data-theme="espresso"] {
   --bg: #f5ebdc;
   --fg: #3d2817;
   --prompt-host: #7a4a28;
