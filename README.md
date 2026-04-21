@@ -275,8 +275,7 @@ Rules:
   wins, loudly.
 - Contributions are re-applied after `reboot()` so the tree stays consistent.
 
-`src/plugins/me/about.ts`, `contact.ts`, and `pwn-profile.ts` are worked
-examples.
+`src/plugins/me/about.ts` and `contact.ts` are worked examples.
 
 ### Registering a new root mount
 
