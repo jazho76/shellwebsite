@@ -1,31 +1,14 @@
 import { bold, brightCyan, dim, green } from '../../core/color.js';
 import type { PluginInstall } from '../../core/kernel.js';
 
-const BANNER = [
-  '                                   ',
-  '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ',
-  '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
-  '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ',
-  '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
-  '          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
-  '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
-  '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
-  ' ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
-  ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ',
-  '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
-  '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
-  '                                   ',
-];
-
 const bullet = dim('-');
 const cmd = brightCyan;
 const section = green;
 
 const CONTENT: string[] = [
-  ...BANNER.map(line => brightCyan(line)),
   '',
   bold('joaquin pinillos'),
-  dim('software engineer — systems, low-level, tooling'),
+  dim('software engineer: systems, low-level, tooling'),
   '',
   section('background'),
   `${bullet} c/c++, x86, systems`,
@@ -43,7 +26,7 @@ const CONTENT: string[] = [
   `${bullet} build small experiments to internalize concepts`,
   `${bullet} iterate: explore → understand → implement`,
   '',
-  section('contact'),
+  section('reach'),
   `${bullet} github:   [github.com/jazho76](https://github.com/jazho76)`,
   `${bullet} linkedin: [linkedin.com/in/joaquin-pinillos](https://linkedin.com/in/joaquin-pinillos)`,
   `${bullet} email:    [hello@jpinillos.dev](mailto:hello@jpinillos.dev)`,
