@@ -8,4 +8,7 @@ export const config = {
 
   // Shell hostname override. undefined → derive from window.location.hostname.
   hostname: undefined as string | undefined,
+
+  // Browser tab title. undefined → use the resolved hostname.
+  title: 'Joaquin Pinillos' as string | undefined,
 } as const;

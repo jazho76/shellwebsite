@@ -105,7 +105,7 @@ let cwd = HOME;
 let cachedHostname = resolveHostname();
 
 if (typeof document !== 'undefined') {
-  document.title = cachedHostname;
+  document.title = config.title ?? cachedHostname;
 }
 
 const installed = new Map<string, Executable>();
