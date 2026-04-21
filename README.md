@@ -3,14 +3,13 @@
 [![Vercel](https://img.shields.io/github/deployments/jazho76/shellwebsite/production?label=vercel&logo=vercel)](https://vercel.com/jpinilloslrs-projects/shellwebsite)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A personal website that looks and feels like a shell. Your content is served
-as commands and files. Everything runs in the browser, no server, no runtime
-other than static files.
+A static website that looks and feels like a real shell. Your content is served
+as commands and files. Everything runs in the browser with static files.
+
+![Shell Website demo](docs/demo.gif)
 
 **Demo:** [jpinillos.dev](https://jpinillos.dev). Fork it, strip my content,
 drop in yours.
-
-![Shell Website demo](docs/demo.gif)
 
 ---
 
@@ -41,6 +40,7 @@ Framework themes: `catppuccin-mocha`, `crt`, `dracula`, `espresso`, `graphite`,
 `gruvbox`, `matrix`, `nord`, `synthwave`, `tokyo-night`. Plus `jazho76` as an example
 of a custom theme. Swap at runtime via `theme <name>`. One
 module per theme. Update `src/themes/index.ts` to add your own or change the default.
+See the [theme gallery](docs/themes.md) for screenshots.
 
 Themes are CSS-var overrides plus optional structured props
 (`backgroundImage`, `overlayBackground`, `overlayBlur`) for wallpaper / glass
