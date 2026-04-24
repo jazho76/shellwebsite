@@ -18,6 +18,7 @@ Fork it, fill in the placeholders in `src/plugins/me/*.ts` and `src/config.ts`.
 - [Features](#features)
 - [Quick start](#quick-start)
 - [Make it yours](#make-it-yours)
+- [Make it weird](#make-it-weird)
 - [Extending](#extending)
 - [License](#license)
 
@@ -182,6 +183,16 @@ Recommended path:
 3. Edit each `src/plugins/me/*.ts` — swap in your bio, links, etc.
 4. Pick a default theme in `src/themes/index.ts` (`DEFAULT_THEME`).
 5. Optional: rebrand `src/system.ts`
+
+---
+
+## Make it weird
+
+Half the fun of shipping a shell site is leaving your own trail. Drop files
+into existing mounts with `vfs.appendDir` (see `src/plugins/me/about.ts`), or
+register a new mount for a whole new tree (see `src/plugins/root.ts`). Hidden
+files, fake logs, gated commands, unreachable-looking scripts. It's your
+shell.
 
 ---
 

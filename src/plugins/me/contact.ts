@@ -16,7 +16,7 @@ const install: PluginInstall = kernel => {
   });
 
   kernel.installExecutable('/bin/contact', {
-    describe: 'how to reach me',
+    describe: 'contact info',
     exec: aliasCat('~/contact.txt'),
   });
 };
