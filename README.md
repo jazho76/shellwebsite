@@ -1,6 +1,5 @@
 # Shell Website
 
-[![Vercel](https://img.shields.io/github/deployments/jazho76/shellwebsite/production?label=vercel&logo=vercel)](https://vercel.com/jpinilloslrs-projects/shellwebsite)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A static website that looks and feels like a real shell. Your content is served
@@ -8,8 +7,8 @@ as commands and files. Everything runs in the browser with static files.
 
 ![Shell Website demo](docs/demo.gif)
 
-**Demo:** [jpinillos.dev](https://jpinillos.dev). Fork it, strip my content,
-drop in yours.
+**Demo:** [jpinillos.dev](https://jpinillos.dev). Fork it, fill in the
+placeholders in `src/plugins/me/*.ts` and `src/config.ts`.
 
 ---
 
@@ -166,14 +165,14 @@ Everything you customize without writing new code lives in these files.
 Framework code under `src/core/` and the non-`me/` plugins under
 `src/plugins/` stays untouched.
 
-| File                        | What's in it                                             |
-| --------------------------- | -------------------------------------------------------- |
-| `src/config.ts`             | GitHub username, PostHog key, optional hostname override |
-| `src/plugins/me/welcome.ts` | Landing banner + bio + links (the `welcome` command)     |
-| `src/plugins/me/about.ts`   | `about.txt` content + `/bin/about`                       |
-| `src/plugins/me/contact.ts` | `contact.txt` content                                    |
-| `src/system.ts`             | Fictional OS / hardware / firmware / kernel identity     |
-| `src/themes/index.ts`       | `DEFAULT_THEME` — which theme to boot with               |
+| File                        | What's in it                                               |
+| --------------------------- | ---------------------------------------------------------- |
+| `src/config.ts`             | GitHub username, PostHog key, hostname override, tab title |
+| `src/plugins/me/welcome.ts` | Landing banner + bio + links (the `welcome` command)       |
+| `src/plugins/me/about.ts`   | `about.txt` content + `/bin/about`                         |
+| `src/plugins/me/contact.ts` | `contact.txt` content + `/bin/contact`                     |
+| `src/system.ts`             | Fictional OS / hardware / firmware / kernel identity       |
+| `src/themes/index.ts`       | `DEFAULT_THEME` — which theme to boot with                 |
 
 Recommended path:
 
@@ -457,12 +456,8 @@ they track the active theme; 256/RGB are fixed.
 
 ## License
 
-The framework is MIT licensed, see [LICENSE](LICENSE). Fork it, ship it, do
+This project is MIT licensed, see [LICENSE](LICENSE). Fork it, ship it, do
 what you want.
-
-The content in `src/plugins/me/` (bio, links, copy) and the `jazho76` theme
-are mine. Legally the MIT license covers it too, but socially please rip it
-out and put your own in before deploying.
 
 Bundled third-party color palettes are credited in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
