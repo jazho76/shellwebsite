@@ -55,9 +55,9 @@ test.describe('mounts: permission denials', () => {
     expect(await runCmd(page, 'ls /root')).toMatch(/Permission denied/);
   });
 
-  test('cat /root/flag.txt denied for guest', async ({ page }) => {
+  test('cat /root/.journal denied for guest', async ({ page }) => {
     await bootAndReady(page);
-    expect(await runCmd(page, 'cat /root/flag.txt')).toMatch(
+    expect(await runCmd(page, 'cat /root/.journal')).toMatch(
       /Permission denied/
     );
   });

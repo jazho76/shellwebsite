@@ -28,15 +28,15 @@ test.describe('identity', () => {
     expect(priv).toBe('#');
   });
 
-  test('root can read the flag; guest cannot', async ({ page }) => {
+  test('root can read /root/.journal; guest cannot', async ({ page }) => {
     test.setTimeout(60_000);
     await bootAndReady(page);
-    expect(await runCmd(page, 'cat /root/flag.txt')).toMatch(
+    expect(await runCmd(page, 'cat /root/.journal')).toMatch(
       /Permission denied/
     );
     await runCmd(page, '/tmp/.pwn', 200);
     expect(await awaitRoot(page)).toBe(true);
-    const rootRead = await runCmd(page, 'cat /root/flag.txt');
+    const rootRead = await runCmd(page, 'cat /root/.journal');
     expect(rootRead).not.toMatch(/permission denied/i);
     expect(rootRead.trim().length).toBeGreaterThan(0);
   });
