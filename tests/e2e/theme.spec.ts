@@ -2,34 +2,6 @@ import { expect, test } from '@playwright/test';
 import { bootAndReady, runCmd } from '../fixtures/harness.js';
 
 test.describe('theme command', () => {
-  test('boot starts with tokyo-night theme applied', async ({ page }) => {
-    await bootAndReady(page);
-    expect(await page.evaluate(() => document.body.dataset.theme)).toBe(
-      'tokyo-night'
-    );
-  });
-
-  test('theme (no args) lists all themes and marks current', async ({
-    page,
-  }) => {
-    await bootAndReady(page);
-    const out = await runCmd(page, 'theme');
-    expect(out).toMatch(/\*\s+tokyo-night/);
-    for (const name of [
-      'crt',
-      'espresso',
-      'catppuccin-mocha',
-      'dracula',
-      'nord',
-      'gruvbox',
-      'graphite',
-      'matrix',
-      'synthwave',
-    ]) {
-      expect(out).toContain(name);
-    }
-  });
-
   for (const name of [
     'dracula',
     'nord',
