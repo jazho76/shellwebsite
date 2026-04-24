@@ -7,35 +7,30 @@ const section = green;
 
 const CONTENT: string[] = [
   '',
-  bold('joaquin pinillos'),
-  dim('software engineer: systems, low-level, tooling'),
+  bold('welcome to shellsite'),
+  dim(
+    'a static portfolio that looks and feels like a real shell. your bio, links,'
+  ),
+  dim(
+    'and projects are served as commands and files. everything runs in the browser.'
+  ),
   '',
-  section('background'),
-  `${bullet} c/c++, x86, systems`,
-  `${bullet} frontend/backend (typescript, nodejs, .net)`,
+  section('make it yours'),
+  `${bullet} src/config.ts              github user, posthog key, hostname, tab title`,
+  `${bullet} src/plugins/me/welcome.ts  this screen`,
+  `${bullet} src/plugins/me/about.ts    ${cmd('about')} command + ~/about.txt`,
+  `${bullet} src/plugins/me/contact.ts  ~/contact.txt`,
+  `${bullet} src/themes/index.ts        DEFAULT_THEME`,
+  `${bullet} src/system.ts              fictional os/hardware identity (optional)`,
   '',
-  section('current focus'),
-  `${bullet} frontend platform at Forge (startup)`,
-  `${bullet} platform development`,
-  `${bullet} systems programming`,
-  `${bullet} security and exploitation`,
-  `${bullet} understanding abstractions by breaking them`,
-  '',
-  section('approach'),
-  `${bullet} prefer understanding systems over using abstractions blindly`,
-  `${bullet} build small experiments to internalize concepts`,
-  `${bullet} iterate: explore → understand → implement`,
-  '',
-  section('reach'),
-  `${bullet} github:   [github.com/jazho76](https://github.com/jazho76)`,
-  `${bullet} linkedin: [linkedin.com/in/joaquin-pinillos](https://linkedin.com/in/joaquin-pinillos)`,
-  `${bullet} email:    [hello@jpinillos.dev](mailto:hello@jpinillos.dev)`,
-  '',
-  section('tip'),
-  `${bullet} try: ${cmd('about')}, ${cmd('projects')}, ${cmd('help')}`,
+  section('try it'),
+  `${bullet} ${cmd('about')}, ${cmd('projects')}, ${cmd('help')}       content commands`,
+  `${bullet} ${cmd('ls ~')}, ${cmd('cat ~/contact.txt')}     browse the vfs`,
+  `${bullet} ${cmd('theme')} <name>                swap palette at runtime`,
+  `${bullet} ${cmd('find / -type f')}              poke around`,
   '',
   dim(
-    'source code for this terminal lives at [github.com/jazho76/shellwebsite](https://github.com/jazho76/shellwebsite)'
+    'source: [github.com/jazho76/shellwebsite](https://github.com/jazho76/shellwebsite)'
   ),
 ];
 
