@@ -381,7 +381,10 @@ test.describe('uname / date / who / ps / kill', () => {
 test.describe('content aliases', () => {
   test('about reads the about.txt body', async ({ page }) => {
     await bootAndReady(page);
-    expect(await runCmd(page, 'about')).toMatch(/software engineer/i);
+    const fromAlias = await runCmd(page, 'about');
+    const fromCat = await runCmd(page, 'cat ~/about.txt');
+    expect(fromAlias).toBe(fromCat);
+    expect(fromAlias.trim()).not.toBe('');
   });
 });
 
