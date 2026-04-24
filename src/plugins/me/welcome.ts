@@ -7,7 +7,7 @@ const section = green;
 
 const CONTENT: string[] = [
   '',
-  bold('welcome to shellsite'),
+  bold('welcome to shellwebsite'),
   dim(
     'a static portfolio that looks and feels like a real shell. your bio, links,'
   ),

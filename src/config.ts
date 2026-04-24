@@ -10,5 +10,5 @@ export const config = {
   hostname: undefined as string | undefined,
 
   // Browser tab title. undefined → use the resolved hostname.
-  title: 'Shell Portfolio' as string | undefined,
+  title: 'Shell Website' as string | undefined,
 } as const;
